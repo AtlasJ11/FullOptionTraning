@@ -1,0 +1,6 @@
+@FullTrailning_HostAddress = http://localhost:5121
+
+GET {{FullTrailning_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
