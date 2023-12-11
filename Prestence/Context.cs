@@ -11,7 +11,6 @@ public class Context : DbContext
     {
 
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
@@ -23,6 +22,6 @@ public class Context : DbContext
     {
         base.OnConfiguring(optionsBuilder);
     }
-    public DbSet<Person> PersonInfos { get; set; }
-    public DbSet<Job> JobInfos { get; set; }
+    public DbSet<Person> Persons { get; set; }
+    public DbSet<Job> Jobs { get; set; }
 }
