@@ -1,3 +1,4 @@
+using FullTrailning.Option;
 using FullTrailning.Prestence;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.Configure<Config>(builder.Configuration.GetSection(nameof(Config)));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
