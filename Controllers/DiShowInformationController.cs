@@ -7,12 +7,12 @@ namespace FullTrailning.Controllers;
 [ApiController]
 public class DiShowInformationController : ControllerBase
 {
-    private readonly IDiServices services;
+    private readonly IDiServices _services;
     private readonly Context context;
 
     public DiShowInformationController(IDiServices services, Context context)
     {
-        this.services = services;
+        _services = services;
         this.context = context;
     }
 
@@ -27,5 +27,18 @@ public class DiShowInformationController : ControllerBase
             return NotFound("nothing found");
 
         return Ok(Info);
+    }
+
+    [HttpPost]
+    public IActionResult SearchWiththeDI(string name, int age)
+    {
+        var searchresult = context.Persons
+            .Where(s => s.Name == name && s.Age == age)
+            .FirstOrDefault();
+        if (searchresult is null)
+        {
+            return NotFound("No maching record found");
+        }
+        return Ok(_services.ShowUserInfo(searchresult.Name, searchresult.Age));
     }
 }

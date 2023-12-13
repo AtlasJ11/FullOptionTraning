@@ -2,13 +2,13 @@
 
 public interface IDiServices
 {
-    string ShowUserInfo (string userName, int phone);
+    string ShowUserInfo (string userName, int age);
 }
 
 public class DiServices : IDiServices
 {
-    public string ShowUserInfo(string userName, int phone)
+    public string ShowUserInfo(string userName, int age)
     {
-        return $"{userName} , and phoneNumber Is {phone}";
+        return $"{userName} , and phoneNumber Is {age}";
     }
 }
