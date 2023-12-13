@@ -1,6 +1,5 @@
 ﻿using FullTrailning.Prestence;
 using FullTrailning.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FullTrailning.Controllers;
@@ -18,10 +17,15 @@ public class DiShowInformationController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult ShowInfo (string Name)
+    public IActionResult ShowInfo(string Name)
     {
         var Info = context.Persons
-            .Where(s => s.Name == Name);
+            .Where(s => s.Name.Contains(Name))
+            .ToList();
+
+        if (Info is null)
+            return NotFound("nothing found");
+
         return Ok(Info);
     }
 }
