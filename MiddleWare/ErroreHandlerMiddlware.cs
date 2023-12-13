@@ -11,7 +11,7 @@ public class ErroreHandlerMiddlware
         _next = next;
     }
 
-    private async Task Invoke (HttpContext httpContext)
+    public async Task Invoke(HttpContext httpContext)
     {
         try
         {
@@ -19,7 +19,8 @@ public class ErroreHandlerMiddlware
         }
         catch (Exception ex)
         {
-            var error = new Error(DateTime.Now, ex.Message , 500);
+            var error = new Error(DateTime.Now, ex.Message, 500);
+            await httpContext.ErrorHandler(error);
             return;
         }
     }

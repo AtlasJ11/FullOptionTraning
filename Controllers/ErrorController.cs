@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace FullTrailning.Controllers;
 [Route("api/[controller]")]
@@ -8,7 +6,7 @@ namespace FullTrailning.Controllers;
 public class ErrorController : ControllerBase
 {
     [HttpGet]
-    public async Task <IActionResult> post()
+    public async Task<IActionResult> post()
     {
         throw new Exception();
     }
